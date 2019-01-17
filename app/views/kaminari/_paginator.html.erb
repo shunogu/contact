@@ -1,0 +1,19 @@
+<div class="container">
+  <%= paginator.render do %>
+    <nav style="margin: 30px; background-color: #719399;">
+      <ul>
+        <%= first_page_tag unless current_page.first? %>
+        <%= next_page_tag unless current_page.last? %>
+        <% each_page do |page| %>
+          <% if page.left_outer? || page.right_outer? || page.inside_window? %>
+            <%= page_tag page %>
+          <% elsif !page.was_truncated? -%>
+            <%= gap_tag %>
+          <% end %>
+        <% end %>
+        <%= last_page_tag unless current_page.last? %>
+        <%= prev_page_tag unless current_page.first? %>
+      </ul>
+    </nav>
+  <% end %>
+</div>

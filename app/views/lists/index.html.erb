@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<div class="row center">
+  <div class="col s12">
+    <h1>Contact</h1>
+  </div>
+</div>
+
+<div class="container">
+  <%= search_form_for @search do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="input-field col s10">
+          <i class="material-icons prefix">search</i>
+          <label for="autocomplete-input">search</label>
+            <%= f.search_field :company_cont, class: "searchform", id: 'incremental' %>
+        </div>
+        <div class="col s2">
+          <%= f.submit class: "btn-small" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Company name</th>
+      <th>Person</th>
+      <th>Memo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td><%= list.company %></td>
+        <td><%= list.person %></td>
+        <td><%= list.memo %></td>
+        <td><%= link_to 'Show', list, class: "btn-small", id: "show_1" %></td>
+        <td><%= link_to 'Edit', edit_list_path(list), class: "btn-small edit" %></td>
+        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-small destroy" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @lists %>
+<br>
+<%= link_to 'Create', new_list_path, class: "btn-small" %>
+
+<script>
+  $('a').on('click', function(){
+    $('body').remove()
+  })
+</script>

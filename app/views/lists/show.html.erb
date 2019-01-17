@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @list.company %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @list.person %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @list.memo %>
+</p>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
