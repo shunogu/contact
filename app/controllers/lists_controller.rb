@@ -63,6 +63,11 @@ class ListsController < ApplicationController
     end
   end
 
+  def search
+    @lists = List.where("company LIKE(?)", "%#{params[:keyword]}%")
+    render partial: 'table'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
